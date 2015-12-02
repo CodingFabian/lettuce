@@ -320,8 +320,8 @@ public class RedisClusterSetupTest extends AbstractTest {
         }
 
         Wait.untilEquals(1, () -> clusterClient.getPartitions().size()).waitOrTimeout();
+        Wait.untilEquals(1, () -> clusterConnectionProvider.getConnectionCount()).waitOrTimeout();
 
-        assertThat(clusterConnectionProvider.getConnectionCount()).isEqualTo(1);
         clusterConnection.close();
 
     }
